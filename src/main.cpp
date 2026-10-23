@@ -17,8 +17,8 @@ int main()
 
     PhysicsEngine engine;
     engine.CentralMass = CENTRAL_BODY_MASS;
-
-    const double V0 = std::sqrt(PhysicsEngine::G * engine.CentralMass / R0); // круговая скорость по y
+    // Скорость для круговой орбиты, направлена вдоль +Y.
+    const double V0 = std::sqrt(PhysicsEngine::G * engine.CentralMass / R0);
 
     WorldState world(WORLD_CAPACITY);
 
