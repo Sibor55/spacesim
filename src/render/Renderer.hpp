@@ -14,6 +14,7 @@ public:
     Renderer& operator=(const Renderer&) = delete;
 
 private:
+    sf::Vector2f WorldToScreen(double x,double y) const;
     sf::RenderWindow window;
     sf::CircleShape  circle;
     float  centerX = 0.f;
