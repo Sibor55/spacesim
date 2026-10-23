@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-class WorldState;   // forward declaration
+class WorldState;
 
 class Renderer {
 public:
@@ -19,5 +19,5 @@ private:
     sf::CircleShape  circle;
     float  centerX = 0.f;
     float  centerY = 0.f;
-    double scale   = 1.0;       // double, чтобы не терять точность при м/px
+    double scale   = 1.0; // Масштаб в пикселях на метр
 };
