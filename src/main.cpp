@@ -1,4 +1,3 @@
-#include <iostream>
 #include <cmath>
 #include "WorldState.hpp"
 #include "PhysicsEngine.hpp"
@@ -6,21 +5,35 @@
 
 int main()
 {
-    WorldState world(16);
+    const int SCREEN_HEIGHT = 600;
+    const int SCREEN_WIDTH = 800;
+
+    const int WORLD_CAPACITY = 16;             // Максимальное количество объектов в мире
+    const double R0 = 7e6;                     // радиус орбиты, м
+    const double CENTRAL_BODY_MASS = 5.972e24; // Масса большого тела, кг
+    const double DT = 0.1;                     // шаг симуляции, с
+    const int STEPS_PER_FRAME = 20;            // 0.1 * 20 = 2 сим-секунды за кадр
+    const double M_SAT = 1000.0;               // масса спутника, кг (для гравитации не важна)
+
     PhysicsEngine engine;
-    engine.CentralMass = 5.972e24;
+    engine.CentralMass = CENTRAL_BODY_MASS;
 
-    double r0 = 7e6;
-    double v0 = std::sqrt(PhysicsEngine::G * engine.CentralMass / r0);
-    Renderer renderer(800, 600, "Space Simulation");
+    const double V0 = std::sqrt(PhysicsEngine::G * engine.CentralMass / R0); // круговая скорость по y
 
-    world.Add(r0, 0.0, 0.0, v0, 1000.0);
+    WorldState world(WORLD_CAPACITY);
 
-    double dt = 1.0;
+    Renderer renderer(SCREEN_WIDTH, SCREEN_HEIGHT, "Space Simulation");
+
+    world.Add(R0, 0.0, 0.0, V0, M_SAT);
+
     while (renderer.IsOpen())
     {
         renderer.PollEvents();
-        engine.Step(world, dt);
+        for (int i = 0; i < STEPS_PER_FRAME; i++)
+        {
+            engine.Step(world, DT);
+        }
+
         renderer.Draw(world);
     }
 }
