@@ -2,6 +2,14 @@
 #include <SFML/Graphics.hpp>
 
 class WorldState;
+// TODO(~начало ноября): Floating Origin, cameraX/cameraY в double,
+//   вычитание камеры в WorldToScreen до scale. 
+
+// TODO(+- ~декабрь): зум камеры (колесо мыши или +/-),
+//   меняет scale.
+
+// TODO(декабрь): хвост траектории (последние N позиций,
+//   sf::VertexArray + LineStrip).
 
 class Renderer {
 public:

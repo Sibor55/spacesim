@@ -3,7 +3,7 @@
 
 WorldState::WorldState(int capacity)
 {
-    Capacity = ((capacity +3) / 4) * 4;
+    Capacity = ((capacity +3) / 4) * 4; // Всегда кратное 4
     PosX.resize(Capacity);
     PosY.resize(Capacity);
     VelX.resize(Capacity);
