@@ -1,6 +1,6 @@
 #include "PhysicsEngine.hpp"
 #include <cmath>
-
+// метод Эйлера
 void PhysicsEngine::Step(WorldState& s, double dt) {
     for (int i = 0; i < s.Count; i++) {
         double x = s.PosX[i];

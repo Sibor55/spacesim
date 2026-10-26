@@ -9,6 +9,7 @@ int main()
     const int SCREEN_WIDTH = 800;
 
     const int WORLD_CAPACITY = 16;             // Максимальное количество объектов в мире
+    // const double R0 = 16e6;
     const double R0 = 7e6;                     // радиус орбиты, м
     const double CENTRAL_BODY_MASS = 5.972e24; // Масса большого тела, кг
     const double DT = 0.1;                     // шаг симуляции, с
@@ -19,13 +20,13 @@ int main()
     engine.CentralMass = CENTRAL_BODY_MASS;
     // Скорость для круговой орбиты, направлена вдоль +Y.
     const double V0 = std::sqrt(PhysicsEngine::G * engine.CentralMass / R0);
-
+    // const double V0 = 14e4;
     WorldState world(WORLD_CAPACITY);
 
     Renderer renderer(SCREEN_WIDTH, SCREEN_HEIGHT, "Space Simulation");
 
     world.Add(R0, 0.0, 0.0, V0, M_SAT);
-
+    renderer.FitOrbit(R0, 1.2);
     while (renderer.IsOpen())
     {
         renderer.PollEvents();

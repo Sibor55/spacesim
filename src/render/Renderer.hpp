@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 
 class WorldState;
-// TODO(~начало ноября): Floating Origin, cameraX/cameraY в double,
+// TODO: Floating Origin, cameraX/cameraY в double,
 //   вычитание камеры в WorldToScreen до scale. 
 
 // TODO(+- ~декабрь): зум камеры (колесо мыши или +/-),
@@ -15,6 +15,7 @@ class Renderer {
 public:
     Renderer(int w, int h, const char* title);
     bool IsOpen() const;
+    void FitOrbit(double r0, float margin);
     void PollEvents();
     void Draw(WorldState& world);
 

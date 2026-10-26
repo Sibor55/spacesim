@@ -5,13 +5,22 @@ Renderer::Renderer(int w, int h, const char *title)
       circle(4.0f),
       centerX(w / 2.0f),
       centerY(h / 2.0f),
-      scale(250.0 / 7e6)
+      scale(1) // На всякий случай
 {
     circle.setOrigin({4.0f, 4.0f});
     circle.setFillColor(sf::Color::White);
 }
 
 bool Renderer::IsOpen() const { return window.isOpen(); }
+
+void Renderer::FitOrbit(double r0, float margin)
+{
+    int w = window.getSize().x;
+    int h = window.getSize().y;
+    scale = (std::min(w, h) / 2.0) / (r0 * margin);
+    centerX = w / 2.0;
+    centerY = h / 2.0;
+}
 
 void Renderer::PollEvents()
 {
