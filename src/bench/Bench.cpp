@@ -137,6 +137,7 @@ int main()
         WorldState soa(N);
         gen.Generate(N, aos, soa);
 
+        
         // сравнение результатов
         std::vector<Body> aos_copy = aos;
         WorldState soa_copy = soa;
@@ -159,6 +160,7 @@ int main()
             max_diff = std::max({max_diff, dx, dy, dvx, dvy});
         }
         std::cout << "max_diff " << max_diff << '\n';
+
 
         // сравнение производительности
         const double t_aos = time_aos(aos, STEPS, DT, sink);

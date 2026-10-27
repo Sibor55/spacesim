@@ -1,2 +1,5 @@
 add_executable(bench Bench.cpp)
+add_executable(verify Verification.cpp)
 target_link_libraries(bench PRIVATE core_lib)
+target_compile_options(bench PRIVATE -O3 -march=native)
+target_compile_options(verify PRIVATE -O3 -march=native)
