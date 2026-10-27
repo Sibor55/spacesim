@@ -8,7 +8,9 @@ void PhysicsEngine::Step(WorldState& s, double dt) {
         double r2 = x*x + y*y;
         double r = std::sqrt(r2);
         double r3 = r2 * r;
-        double invR3 = 1.0 / r3;
+        double invR3 = 1.0 / r3; 
+        // https://stackoverflow.com/questions/17883240/is-multiplication-faster-than-float-division
+
 
         double ax = -G * CentralMass * x * invR3;
         double ay = -G * CentralMass * y * invR3;
